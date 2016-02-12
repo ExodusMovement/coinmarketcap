@@ -1,0 +1,10 @@
+{
+  "presets": ["es2015"],
+  "plugins": [
+    "add-module-exports",
+    "syntax-async-functions",
+    "transform-regenerator",
+    "transform-runtime",
+    "transform-strict-mode"
+  ]
+}
