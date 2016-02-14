@@ -7,7 +7,7 @@ export async function history (coinName, interval) {
   let startTime = intervals.indexOf(interval) > -1
     ? (endTime - interval * 24 * 60 * 60 * 1000)
     : 1367174841000
-  let url = `https://api.coinmarketcap.com/v1/datapoints/${coinName.toLowerCase()}/${startTime}/${endTime}`
+  let url = `https://api.coinmarketcap.com/v1/datapoints/${coinName.toLowerCase()}/${startTime}/${endTime}/`
 
   let response = await fetch(url)
   let body = await response.text()
