@@ -84,7 +84,7 @@ await coinmarketcap.tickerByAsset('bitcoin', { convert: 'eur' })
 
 ### `global([options])`
 
-Get a list of assets and their info.
+Get global info.
 
 - `options` (Object) Optional.
   - `convert` (String) Return 24h volume, and market cap in terms of another currency.
