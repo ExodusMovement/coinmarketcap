@@ -31,14 +31,14 @@ test('ticker()', async t => {
   t.is(data.length, 5, 'limit works')
   data.forEach((item, index) => {
     tickerKeys.map(key => item[key])
-    .forEach((val, i) => t.is(typeof val, 'string', `data[${index}].${keys[i]} is a string`))
+    .forEach((val, i) => t.is(typeof val, 'string', `data[${index}].${tickerKeys[i]} is a string`))
   })
 })
 
 test('tickerByAsset()', async t => {
   const data = await coinmarketcap.tickerByAsset('bitcoin', { convert: 'eur' })
   tickerKeys.map(key => data[key])
-  .forEach((val, i) => t.is(typeof val, 'string', `data.${keys[i]} is a string`))
+  .forEach((val, i) => t.is(typeof val, 'string', `data.${tickerKeys[i]} is a string`))
 })
 
 test('global()', async t => {
