@@ -1,10 +1,10 @@
 {
-  "name": "coinmarketcapcom-data",
+  "name": "coinmarketcap",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/ExodusMovement/coinmarketcapcom-data/issues"
+    "url": "https://github.com/ExodusMovement/coinmarketcap/issues"
   },
   "license": "MIT",
   "author": "The Exodus Movement",
@@ -20,7 +20,7 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ExodusMovement/coinmarketcapcom-data.git"
+    "url": "https://github.com/ExodusMovement/coinmarketcap.git"
   },
   "scripts": {
     "build": "rm -rf lib && babel -D src -d lib",
