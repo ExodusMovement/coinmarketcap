@@ -1,30 +1,49 @@
 import test from 'blue-tape'
-import * as coincapio from '../src'
+global.fetch = require('node-fetch')
+import * as coinmarketcap from '../src'
 
-test('get history for [1, 7, 30, 90, 180, 365] days and all time', async function (t) {
-  let intervals = [1, 7, 30, 90, 180, 365, null]
-  for (let interval of intervals) {
-    let data = await coincapio.history('bitcoin', interval)
-    t.ok(data, 'return something')
-    t.ok(data.cap instanceof Array, 'cap is array')
-    t.ok(data.price instanceof Array, 'price is array')
-    t.ok(data.cap.length === data.price.length, 'cap have same length as price')
-    if (interval === null) continue
-
-    var period = data.cap[data.cap.length - 1].date - data.cap[0].date
-    var days = Math.round(period / 1000 / 60 / 60 / 24)
-    t.is(interval, days, 'same interval')
-  }
+test('ticker()', async t => {
+  const data = await coinmarketcap.ticker({
+    limit: 5,
+    convert: 'eur'
+  })
+  t.assert(Array.isArray(data), 'data is an array')
+  t.is(data.length, 5, 'limit works')
+  const keys = [
+    'id',
+    'name',
+    'symbol',
+    'rank',
+    'price_usd',
+    'price_btc',
+    '24h_volume_usd',
+    'market_cap_usd',
+    'available_supply',
+    'total_supply',
+    'percent_change_1h',
+    'percent_change_24h',
+    'percent_change_7d',
+    'last_updated',
+    'price_eur',
+    'volume_eur',
+    'market_cap_eur'
+  ]
+  data.forEach((item, index) => {
+    keys.map(key => item[key])
+    .forEach((val, i) => t.is(typeof val, 'string', `data[${index}].${keys[i]} is a string`))
+  })
 })
 
-test('get current price and cap', async function (t) {
-  let data = await coincapio.current('bitcoin')
-  t.ok(data, 'return something')
-  t.ok(data.cap, 'include cap')
-  t.ok(data.price, 'include price')
-
-  let count = data.cap / data.price
-  let rounded = Math.floor(count)
-  t.ok(count - rounded < 1e3, 'coins count almost int')
-  t.ok(rounded > 15 * 1e6 && rounded < 21 * 1e6, 'right coins count')
+test('global()', async t => {
+  const data = await coinmarketcap.global()
+  const keys = [
+    'total_market_cap_usd',
+    'total_24h_volume_usd',
+    'bitcoin_percentage_of_market_cap',
+    'active_currencies',
+    'active_assets',
+    'active_markets'
+  ]
+  keys.map(key => data[key])
+  .forEach((val, i) => t.is(typeof val, 'number', `data.${keys[i]} is a number`))
 })
