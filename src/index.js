@@ -1,5 +1,6 @@
-/* global fetch */
 import * as querystring from 'querystring'
+
+/* global fetch */
 
 export async function ticker (opts?: { limit?: number, convert?: string }): Object {
   const query = querystring.stringify(opts)
