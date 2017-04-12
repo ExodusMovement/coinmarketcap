@@ -1,4 +1,4 @@
-UNRELEASED
+0.2.0 / 2017-04-12
 ------------------
 - switch from `blue-tape` to `tape` and `tape-promise`
 - rename `global()` to `globalMarket()`
