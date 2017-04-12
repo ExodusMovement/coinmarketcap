@@ -28,7 +28,7 @@
     "test": "npm run lint && npm run unit",
     "posttest": "NODE_ENV=production npm run build",
     "lint": "standard",
-    "unit": "blue-tape -r babel-register test/*.js | tf-spec"
+    "unit": "find ./test -name *.test.js -exec node -r babel-register {} \\; | tf-spec"
   },
   "devDependencies": {
     "@tap-format/spec": "^0.2.0",
@@ -39,14 +39,16 @@
     "babel-plugin-typecheck": "^3.9.0",
     "babel-preset-env": "^1.2.2",
     "babel-register": "^6.24.0",
-    "blue-tape": "^1.0.0",
     "node-fetch": "^1.6.3",
-    "standard": "^9.0.2"
+    "standard": "^9.0.2",
+    "tape": "^4.6.3",
+    "tape-promise": "^2.0.1"
   },
   "standard": {
     "parser": "babel-eslint",
     "ignore": [
       "lib"
     ]
-  }
+  },
+  "dependencies": {}
 }

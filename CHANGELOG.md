@@ -1,3 +1,8 @@
+UNRELEASED
+------------------
+- switch from `blue-tape` to `tape` and `tape-promise`
+
+
 0.1.0 / 2017-04-12
 ------------------
 - use `yarn`

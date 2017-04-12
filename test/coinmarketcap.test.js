@@ -1,4 +1,4 @@
-import test from 'blue-tape'
+import test from 'tape-promise/tape'
 global.fetch = require('node-fetch')
 import * as coinmarketcap from '../src'
 
