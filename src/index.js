@@ -15,7 +15,7 @@ export async function tickerByAsset (asset: string, opts?: { convert?: string })
   return data
 }
 
-export async function global (opts?: { convert?: string }): Object {
+export async function globalMarket (opts?: { convert?: string }): Object {
   const query = querystring.stringify(opts)
   const res = await fetch(`https://api.coinmarketcap.com/v1/global/?${query}`)
   return res.json()

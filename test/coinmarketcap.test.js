@@ -45,8 +45,8 @@ test('tickerByAsset()', async t => {
   t.end()
 })
 
-test('global()', async t => {
-  const data = await coinmarketcap.global()
+test('globalMarket()', async t => {
+  const data = await coinmarketcap.globalMarket()
   const keys = [
     'total_market_cap_usd',
     'total_24h_volume_usd',
